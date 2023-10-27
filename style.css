@@ -71,15 +71,18 @@ body * {
   border-radius: 50%;
 
   position: absolute;
-  z-index: 1;
-  left: 0;
   top: 50%;
+  left: 0;
+  z-index: 1;
   transform: translateY(-50%);
 }
 
 .light #switch button {
-   right: 0;
-   left: initial;
+   animation: slide-in 0.2s forwards;
+}
+
+#switch button :hover {
+  outline: 8px solid var(--highlight-color);
 }
 
 #switch span {
@@ -100,28 +103,31 @@ ul {
   flex-direction: column;
   gap: 16px;
 
-  padding: 24px;
+  padding: 24px 0;
 }
 
 ul li a {
   display: flex;
   align-items: center;
   justify-content: center;
+
   padding: 16px 24px;
  
-  border-radius: 8px;
   background: var(--surface-color);
   border: 1px solid var(--stroke-color);
+  border-radius: 8px;
+
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
  
 
-  font-weight: 500px;
   text-decoration: none;
+  font-weight: 500;
 
   transition: background 0.3s;
 }
 
+/* pseudo-selector */
 ul li a:hover {
   background: var(--surface-color-hover);
   border: 1.5px solid var(--text-color);
@@ -131,8 +137,9 @@ ul li a:hover {
 #social-links {
   display: flex;
   justify-content: center;
+
+  padding: 24px 0;
   font-size: 24px;
-  margin: 24px;
 }
 
 #social-links a {
@@ -146,7 +153,6 @@ ul li a:hover {
 }
 
 #social-links a:hover {
-  padding:16px;
   background: var(--highlight-color);
 }
 
@@ -166,4 +172,22 @@ footer {
 
 .light {
   --bg-url: url(.assets/assets/bg-desktop-light.jpg)
+}
+
+/* animation */
+@keyframes slide-in {
+  from {
+    left: 0;
+  }
+  to {
+    left: 50%;
+  }
+} 
+@keyframes slide-back {
+  from {
+    left:50%;
+  }
+  to {
+    left: 0;
+  }
 }
